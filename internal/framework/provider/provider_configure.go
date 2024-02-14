@@ -25,8 +25,8 @@ import (
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 )
 
-func (p *KubernetesProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-	var data KubernetesProviderModel
+func (p *CiliumNetworkPoliciesProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+	var data CiliumNetworkPoliciesProviderModel
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 	if resp.Diagnostics.HasError() {
 		return
@@ -38,7 +38,7 @@ func (p *KubernetesProvider) Configure(ctx context.Context, req provider.Configu
 	}
 }
 
-func newKubernetesClientConfig(ctx context.Context, data KubernetesProviderModel) (*restclient.Config, error) {
+func newKubernetesClientConfig(ctx context.Context, data CiliumNetworkPoliciesProviderModel) (*restclient.Config, error) {
 	overrides := &clientcmd.ConfigOverrides{}
 	loader := &clientcmd.ClientConfigLoadingRules{}
 

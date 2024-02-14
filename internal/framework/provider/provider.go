@@ -13,19 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-// Ensure KubernetesProvider satisfies various provider interfaces.
-var _ provider.Provider = &KubernetesProvider{}
+// Ensure CiliumNetworkPoliciesProvider satisfies various provider interfaces.
+var _ provider.Provider = &CiliumNetworkPoliciesProvider{}
 
-// KubernetesProvider defines the provider implementation.
-type KubernetesProvider struct {
+// CiliumNetworkPoliciesProvider defines the provider implementation.
+type CiliumNetworkPoliciesProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-// KubernetesProviderModel describes the provider data model.
-type KubernetesProviderModel struct {
+// CiliumNetworkPoliciesProviderModel describes the provider data model.
+type CiliumNetworkPoliciesProviderModel struct {
 	Host     types.String `tfsdk:"host"`
 	Username types.String `tfsdk:"username"`
 	Password types.String `tfsdk:"password"`
@@ -62,12 +62,12 @@ type KubernetesProviderModel struct {
 	} `tfsdk:"experiments"`
 }
 
-func (p *KubernetesProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+func (p *CiliumNetworkPoliciesProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
 	resp.TypeName = "kubernetes"
 	resp.Version = p.version
 }
 
-func (p *KubernetesProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *CiliumNetworkPoliciesProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"host": schema.StringAttribute{
@@ -178,16 +178,16 @@ func (p *KubernetesProvider) Schema(ctx context.Context, req provider.SchemaRequ
 	}
 }
 
-func (p *KubernetesProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *CiliumNetworkPoliciesProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{}
 }
 
-func (p *KubernetesProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *CiliumNetworkPoliciesProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{}
 }
 
 func New(version string) provider.Provider {
-	return &KubernetesProvider{
+	return &CiliumNetworkPoliciesProvider{
 		version: version,
 	}
 }

@@ -25,7 +25,7 @@ import (
 )
 
 const (
-	providerName = "registry.terraform.io/hashicorp/kubernetes"
+	providerName = "registry.terraform.io/hashicorp/cilium-network-policies"
 
 	Version = "dev"
 )
@@ -84,7 +84,7 @@ func convertReattachConfig(reattachConfig *plugin.ReattachConfig) tfexec.Reattac
 // to set the TF_REATTACH_PROVIDERS variable
 func printReattachConfig(config *plugin.ReattachConfig) {
 	reattachStr, err := json.Marshal(map[string]tfexec.ReattachConfig{
-		"kubernetes": convertReattachConfig(config),
+		"cilium-network-policies": convertReattachConfig(config),
 	})
 	if err != nil {
 		fmt.Printf("Error building reattach string: %s", err)

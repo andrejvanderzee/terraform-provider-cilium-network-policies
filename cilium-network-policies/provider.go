@@ -1,7 +1,7 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-package kubernetes
+package cilium
 
 import (
 	"bytes"
@@ -328,7 +328,7 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, terraformVer
 	if logging.IsDebugOrHigher() {
 		log.Printf("[DEBUG] Enabling HTTP requests/responses tracing")
 		cfg.WrapTransport = func(rt http.RoundTripper) http.RoundTripper {
-			return logging.NewSubsystemLoggingHTTPTransport("Kubernetes", rt)
+			return logging.NewSubsystemLoggingHTTPTransport("CiliumNetworkPolicies", rt)
 		}
 	}
 

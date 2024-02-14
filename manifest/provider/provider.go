@@ -219,7 +219,7 @@ func GetProviderResourceSchema() map[string]*tfprotov5.Schema {
 // GetProviderDataSourceSchema contains the definitions of all supported data sources
 func GetProviderDataSourceSchema() map[string]*tfprotov5.Schema {
 	return map[string]*tfprotov5.Schema{
-		"kubernetes_resource": {
+		"cilium_network_policies_resource": {
 			Version: 1,
 			Block: &tfprotov5.SchemaBlock{
 				Attributes: []*tfprotov5.SchemaAttribute{
@@ -270,7 +270,7 @@ func GetProviderDataSourceSchema() map[string]*tfprotov5.Schema {
 				},
 			},
 		},
-		"kubernetes_resources": {
+		"cilium_network_policies_resources": {
 			Version: 1,
 			Block: &tfprotov5.SchemaBlock{
 				Attributes: []*tfprotov5.SchemaAttribute{

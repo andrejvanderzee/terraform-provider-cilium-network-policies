@@ -17,7 +17,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-go/tfprotov5"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/mitchellh/go-homedir"
-	"golang.org/x/mod/semver"
 	"k8s.io/apimachinery/pkg/runtime"
 	apimachineryschema "k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
@@ -96,20 +95,6 @@ func (s *RawProviderServer) ConfigureProvider(ctx context.Context, req *tfprotov
 					})
 					return response, nil
 				}
-			}
-		}
-	}
-	if v := os.Getenv("TF_X_KUBERNETES_MANIFEST_RESOURCE"); v != "" {
-		providerEnabled, err = strconv.ParseBool(v)
-		if err != nil {
-			if err != nil {
-				// invalid attribute type - this shouldn't happen, bail out for now
-				response.Diagnostics = append(response.Diagnostics, &tfprotov5.Diagnostic{
-					Severity: tfprotov5.DiagnosticSeverityError,
-					Summary:  "Provider configuration: failed to parse boolean from `TF_X_KUBERNETES_MANIFEST_RESOURCE` env var",
-					Detail:   err.Error(),
-				})
-				return response, nil
 			}
 		}
 	}
@@ -673,19 +658,5 @@ func (s *RawProviderServer) ConfigureProvider(ctx context.Context, req *tfprotov
 }
 
 func (s *RawProviderServer) canExecute() (resp []*tfprotov5.Diagnostic) {
-	if !s.providerEnabled {
-		resp = append(resp, &tfprotov5.Diagnostic{
-			Severity: tfprotov5.DiagnosticSeverityError,
-			Summary:  "Experimental feature not enabled.",
-			Detail:   "The `kubernetes_manifest` resource is an experimental feature and must be explicitly enabled in the provider configuration block.",
-		})
-	}
-	if semver.IsValid(s.hostTFVersion) && semver.Compare(s.hostTFVersion, minTFVersion) < 0 {
-		resp = append(resp, &tfprotov5.Diagnostic{
-			Severity: tfprotov5.DiagnosticSeverityError,
-			Summary:  "Incompatible terraform version",
-			Detail:   fmt.Sprintf("The `kubernetes_manifest` resource requires Terraform %s or above", minTFVersion),
-		})
-	}
 	return
 }

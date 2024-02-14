@@ -1,4 +1,4 @@
-package kubernetes
+package cilium
 
 func expandStringSlice(s []interface{}) []string {
 	result := make([]string, len(s))

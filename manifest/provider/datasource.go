@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/hashicorp/terraform-plugin-go/tfprotov5"
-	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/morph"
 	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/payload"
+	"github.com/hashicorp/terraform-plugin-go/tfprotov5"
+	"github.com/hashicorp/terraform-plugin-go/tftypes"
 
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/meta"
@@ -22,9 +22,9 @@ import (
 
 func (s *RawProviderServer) ReadDataSource(ctx context.Context, req *tfprotov5.ReadDataSourceRequest) (*tfprotov5.ReadDataSourceResponse, error) {
 	switch req.TypeName {
-	case "kubernetes_resource":
+	case "cilium_network_policies_resource":
 		return s.ReadSingularDataSource(ctx, req)
-	case "kubernetes_resources":
+	case "cilium_network_policies_resources":
 		return s.ReadPluralDataSource(ctx, req)
 	}
 

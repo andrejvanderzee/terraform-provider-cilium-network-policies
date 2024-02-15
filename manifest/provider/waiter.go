@@ -10,9 +10,9 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/payload"
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
-	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/payload"
 	"github.com/zclconf/go-cty/cty"
 
 	hcl "github.com/hashicorp/hcl/v2"

@@ -10,9 +10,9 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest"
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
-	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest"
 	"github.com/mitchellh/hashstructure"
 )
 

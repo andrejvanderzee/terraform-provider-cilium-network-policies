@@ -6,9 +6,9 @@ package provider
 import (
 	"context"
 
+	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/openapi"
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov5"
-	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/openapi"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/install"

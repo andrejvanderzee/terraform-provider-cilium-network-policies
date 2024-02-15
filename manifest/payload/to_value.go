@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/morph"
+	"github.com/hashicorp/terraform-plugin-go/tftypes"
 )
 
 // ToTFValue converts a Kubernetes dynamic client unstructured value

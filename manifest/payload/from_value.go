@@ -7,8 +7,8 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/andrejvanderzee/terraform-provider-cilium-network-policies/manifest/morph"
+	"github.com/hashicorp/terraform-plugin-go/tftypes"
 )
 
 // FromTFValue converts a Terraform specific tftypes.Value type object
